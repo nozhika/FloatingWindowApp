@@ -1,24 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
+    <!-- Panel daftar aplikasi: lebar 0 saat tertutup, animasi melebar saat dibuka -->
+    <LinearLayout
+        android:id="@+id/appPanel"
+        android:layout_width="0dp"
+        android:layout_height="380dp"
+        android:orientation="vertical"
+        android:background="@drawable/panel_background"
+        android:visibility="gone"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="6dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Buka Aplikasi"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/ivClosePanel"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:padding="4dp"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:contentDescription="Tutup panel" />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:id="@+id/appListContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+    </LinearLayout>
+
+    <!-- Handle / tab swiper yang selalu menempel di tepi layar -->
     <ImageView
-        android:id="@+id/ivBubble"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:background="@drawable/bubble_background"
-        android:padding="16dp"
-        android:src="@android:drawable/ic_menu_myplaces"
-        android:contentDescription="Floating bubble" />
+        android:id="@+id/ivHandle"
+        android:layout_width="26dp"
+        android:layout_height="84dp"
+        android:background="@drawable/handle_background"
+        android:src="@drawable/ic_arrow_handle"
+        android:padding="5dp"
+        android:contentDescription="Buka panel aplikasi" />
 
-    <ImageView
-        android:id="@+id/ivClose"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_gravity="top|end"
-        android:src="@android:drawable/ic_menu_close_clear_cancel"
-        android:background="@android:color/white"
-        android:contentDescription="Close floating window" />
-
-</FrameLayout>
+</LinearLayout>
